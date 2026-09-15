@@ -2,15 +2,15 @@ const DEFAULT_CONFIG = {
   theme: 'dark-premium',
   hero: {
     headline: { en:"Breaking News. Viral Updates. Real Impact.", hi:"ब्रेकिंग स्टोरीज़। वायरल अपडेट्स। असली असर।", hinglish:"Breaking News. Viral Updates. Real Impact.", ur:"بریکنگ اسٹوریز۔ وائرل اپڈیٹس۔ حقیقی اثر۔" },
-    desc: { en:"Clipkart_india is a fast-growing digital news platform delivering trending News, political updates, social issues, and viral content to audiences across India.",
-            hi:"Clipkart_india एक तेज़ी से बढ़ता डिजिटल न्यूज़ प्लेटफ़ॉर्म है जो पूरे भारत के दर्शकों तक ट्रेंडिंग स्टोरीज़, राजनीतिक अपडेट, सामाजिक मुद्दे और वायरल कंटेंट पहुंचाता है।",
-            hinglish:"Clipkart_india ek fast-growing digital news platform hai jo poore India ke audience tak trending News, political updates, social issues aur viral content pahunchata hai.",
-            ur:"Clipkart_india ایک تیزی سے بڑھتا ہوا ڈیجیٹل نیوز پلیٹ فارم ہے جو پورے ہندوستان کے سامعین تک ٹرینڈنگ اسٹوریز، سیاسی اپڈیٹس، سماجی مسائل اور وائرل مواد پہنچاتا ہے۔" },
+        desc: { en:"• Clipkart_India Brings Truth to Your Feed, the Impact, and the Stories That Deserve to Be Heard.\n• Stay Informed, Stay Connected, and Stay Ahead with the Latest News, Trending Stories, and Real-Time Updates from Around the World.",
+          hi:"• Clipkart_India Brings Truth to Your Feed, the Impact, and the Stories That Deserve to Be Heard.\n• Stay Informed, Stay Connected, and Stay Ahead with the Latest News, Trending Stories, and Real-Time Updates from Around the World.",
+          hinglish:"• Clipkart_India Brings Truth to Your Feed, the Impact, and the Stories That Deserve to Be Heard.\n• Stay Informed, Stay Connected, and Stay Ahead with the Latest News, Trending Stories, and Real-Time Updates from Around the World.",
+          ur:"• Clipkart_India Brings Truth to Your Feed, the Impact, and the Stories That Deserve to Be Heard.\n• Stay Informed, Stay Connected, and Stay Ahead with the Latest News, Trending Stories, and Real-Time Updates from Around the World." },
     stat1:"50k+", stat1label:{en:"Followers",hi:"फॉलोअर्स",hinglish:"Followers",ur:"فالوورز"},
     stat2:"40+ Millions", stat2label:{en:"Monthly Views",hi:"मासिक व्यूज़",hinglish:"Monthly Views",ur:"ماہانہ ویوز"},
     stat3:"Daily", stat3label:{en:"News & Viral Updates",hi:"न्यूज़ और वायरल अपडेट्स",hinglish:"News & Viral Updates",ur:"خبریں اور وائرل اپڈیٹس"},
     ctaPortfolioLabel:{en:"View Portfolio",hi:"पोर्टफोलियो देखें",hinglish:"Portfolio Dekhein",ur:"پورٹ فولیو دیکھیں"},
-    ctaPortfolioUrl:"#reels"
+    ctaPortfolioUrl:"#socialQuick"
   },
   about: {
     title:{en:"Who We Are",hi:"हम कौन हैं",hinglish:"Hum Kaun Hain",ur:"ہم کون ہیں"},
@@ -38,13 +38,13 @@ const DEFAULT_CONFIG = {
     {value:"Daily", label:{en:"News & Content",hi:"समाचार और कंटेंट",hinglish:"News & Content",ur:"خبریں اور مواد"}}
   ],
   socials:[
-    {id:'instagram', name:'Instagram', icon:'📸', url:'https://www.instagram.com/clipkart_india?stkn=czJpbjhtdDYyN3By', enabled:true},
-    {id:'facebook', name:'Facebook', icon:'📘', url:'https://www.facebook.com/61588800056113/', enabled:true},
-    {id:'youtube', name:'YouTube', icon:'▶️', url:'https://youtube.com/@clipkart18?si=X13_P1KOR5enqfFw', enabled:true},
+    {id:'instagram', name:'Instagram', icon:'instagram', url:'https://www.instagram.com/clipkart_india?stkn=czJpbjhtdDYyN3By', enabled:true},
+    {id:'facebook', name:'Facebook', icon:'facebook', url:'https://www.facebook.com/61588800056113/', enabled:true},
+    {id:'youtube', name:'YouTube', icon:'youtube', url:'https://youtube.com/@clipkart18?si=X13_P1KOR5enqfFw', enabled:true},
     
-    {id:'telegram', name:'Telegram', icon:'✈️', url:'https://t.me/clipkart_india', enabled:true},
-    {id:'x', name:'X / Twitter', icon:'✖️', url:'https://x.com/Clipkart_India', enabled:true},
-    {id:'whatsapp', name:'WhatsApp', icon:'💬', url:'', enabled:false},
+    {id:'telegram', name:'Telegram', icon:'telegram', url:'https://t.me/clipkart_india', enabled:true},
+    {id:'x', name:'X / Twitter', icon:'x', url:'https://x.com/Clipkart_India', enabled:true},
+    {id:'whatsapp', name:'WhatsApp', icon:'whatsapp', url:'', enabled:false},
   ],
   contact:{email:'clipkartofficial824@gmail.com', instagramDm:'https://www.instagram.com/clipkart_india?stkn=czJpbjhtdDYyN3By', messenger:'https://www.facebook.com/61588800056113/', whatsapp:'',},
   reels:{
@@ -86,7 +86,29 @@ const I18N_STATIC = {
 
 let CONFIG = null;
 let LANG = 'en';
-let PLATFORM_ICONS = {instagram:'📸',facebook:'📘',youtube:'▶️',x:'✖️',tiktok:'🎵',telegram:'✈️',whatsapp:'💬',linkedin:'💼',threads:'🧵',snapchat:'👻'};
+const PLATFORM_ICONS = {instagram:'instagram',facebook:'facebook',youtube:'youtube',x:'x',tiktok:'tiktok',telegram:'telegram',whatsapp:'whatsapp',linkedin:'linkedin',threads:'threads',snapchat:'snapchat'};
+const PLATFORM_ICON_COLORS = {instagram:'E4405F',facebook:'1877F2',youtube:'FF0000',x:'FFFFFF',tiktok:'FFFFFF',telegram:'26A5E4',whatsapp:'25D366',linkedin:'0A66C2',threads:'FFFFFF',snapchat:'FFFC00'};
+
+function socialIconMarkup(platform, fallback){
+  const slug = PLATFORM_ICONS[platform] || PLATFORM_ICONS[fallback];
+  if(!slug) return '<span class="social-icon-fallback" aria-hidden="true">↗</span>';
+  const color = PLATFORM_ICON_COLORS[slug] || 'FFFFFF';
+  return `<img class="social-icon" src="https://cdn.simpleicons.org/${escapeAttr(slug)}/${color}" alt="" aria-hidden="true">`;
+}
+
+const TOPIC_ICONS = [
+  '<path d="M4 20h16M6 17h12M8 14h8M10 4h4l1 4H9l1-4Z"/><path d="M12 8v6"/>',
+  '<circle cx="12" cy="8" r="3"/><circle cx="5.5" cy="10" r="2.5"/><circle cx="18.5" cy="10" r="2.5"/><path d="M3 20c.4-3 1.3-5 2.5-5s2.1 2 2.5 5M16 20c.4-3 1.3-5 2.5-5s2.1 2 2.5 5M8 20c.5-3.8 1.8-6 4-6s3.5 2.2 4 6"/>',
+  '<path d="M4 20V9l8-5 8 5v11M2 20h20M8 20v-6h8v6M9 9h6"/>',
+  '<path d="m4 16 4-5 3 3 5-7 4 5"/><path d="M4 20h16"/><circle cx="8" cy="11" r="1"/><circle cx="16" cy="7" r="1"/>',
+  '<path d="M4 5h16v11H8l-4 4V5Z"/><path d="M8 9h8M8 12h5"/><path d="M17 5v4l2-1 2 1V5"/>',
+  '<circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2 2.2 3 4.9 3 8s-1 5.8-3 8c-2-2.2-3-4.9-3-8s1-5.8 3-8Z"/>'
+];
+
+function topicIconMarkup(index){
+  const paths = TOPIC_ICONS[index % TOPIC_ICONS.length];
+  return `<span class="topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${paths}</svg></span>`;
+}
 
 /* ================================================================
    STORAGE HELPERS  (window.storage — shared site config, no custom backend)
@@ -94,7 +116,15 @@ let PLATFORM_ICONS = {instagram:'📸',facebook:'📘',youtube:'▶️',x:'✖�
 async function loadConfig(){
   try{
     const res = await window.storage.get('site-config', true);
-    if(res && res.value){ return JSON.parse(res.value); }
+    if(res && res.value){
+      const config = JSON.parse(res.value);
+      const oldDesc = 'Clipkart_india is a fast-growing digital news platform delivering trending News, political updates, social issues, and viral content to audiences across India.';
+      if(config.hero && config.hero.desc && config.hero.desc.en === oldDesc){
+        config.hero.desc = JSON.parse(JSON.stringify(DEFAULT_CONFIG.hero.desc));
+        await saveConfig(config);
+      }
+      return config;
+    }
   }catch(e){ /* not found yet */ }
   return JSON.parse(JSON.stringify(DEFAULT_CONFIG));
 }
@@ -146,6 +176,9 @@ function renderAll(){
   document.getElementById('themeSelect').value = CONFIG.theme;
   document.documentElement.setAttribute('data-theme', CONFIG.theme);
   applyStaticI18n();
+  document.querySelectorAll('[data-social-brand]').forEach(el=>{
+    el.innerHTML = socialIconMarkup(el.dataset.socialBrand);
+  });
 
   // hero
   document.querySelector('[data-i18n="hero.headline"]').textContent = t(CONFIG.hero.headline);
@@ -156,10 +189,6 @@ function renderAll(){
   document.querySelector('[data-i18n="hero.stat2label"]').textContent = t(CONFIG.hero.stat2label);
   document.querySelector('[data-i18n="hero.stat3"]').textContent = CONFIG.hero.stat3;
   document.querySelector('[data-i18n="hero.stat3label"]').textContent = t(CONFIG.hero.stat3label);
-  const ctaP = document.getElementById('ctaPortfolio');
-  ctaP.textContent = t(CONFIG.hero.ctaPortfolioLabel);
-  ctaP.setAttribute('href', CONFIG.hero.ctaPortfolioUrl || '#reels');
-
   // about
   document.querySelector('[data-i18n="about.title"]').textContent = t(CONFIG.about.title);
   document.querySelector('[data-i18n="about.desc"]').textContent = t(CONFIG.about.desc);
@@ -167,7 +196,7 @@ function renderAll(){
 
   // coverage
   const covGrid = document.getElementById('coverageGrid');
-  covGrid.innerHTML = CONFIG.coverage.map(c=>`<div class="cov-card"><h3>${escapeHtml(t(c))}</h3></div>`).join('');
+  covGrid.innerHTML = CONFIG.coverage.map((c,i)=>`<div class="cov-card">${topicIconMarkup(i)}<h3>${escapeHtml(t(c))}</h3></div>`).join('');
 
   // stats
   const statsGrid = document.getElementById('statsGrid');
@@ -178,54 +207,15 @@ function renderAll(){
   document.getElementById('socialStrip').innerHTML = CONFIG.socials.map(s=>{
     const live = s.enabled && s.url;
     return `<a class="social-chip ${live?'':'disabled'}" href="${live?escapeAttr(s.url):'#'}" target="${live?'_blank':'_self'}" rel="noopener">
-      <span class="ic">${s.icon||PLATFORM_ICONS[s.id]||'🔗'}</span><span>${escapeHtml(s.name)}</span>
+      <span class="ic">${socialIconMarkup(s.id, s.icon)}</span><span>${escapeHtml(s.name)}</span>
     </a>`;
   }).join('');
   document.getElementById('footerSocials').innerHTML = enabledSocials.map(s=>
-    `<a class="ic" href="${escapeAttr(s.url)}" target="_blank" rel="noopener" title="${escapeAttr(s.name)}">${s.icon||'🔗'}</a>`
+    `<a class="ic" href="${escapeAttr(s.url)}" target="_blank" rel="noopener" title="${escapeAttr(s.name)}">${socialIconMarkup(s.id, s.icon)}</a>`
   ).join('');
   document.getElementById('footerLinks').innerHTML =
-    `<a href="#about">${I18N_STATIC[LANG]['nav.about']}</a><a href="#contact">${I18N_STATIC[LANG]['nav.contact']}</a>`;
-
-  // floating dock: whatsapp + instagram + email quick access if present
-  const dockItems = [];
-  if(CONFIG.contact.whatsapp) dockItems.push({icon:'💬', url:waLink(CONFIG.contact.whatsapp)});
-  const ig = CONFIG.socials.find(s=>s.id==='instagram');
-  if(ig && ig.enabled && ig.url) dockItems.push({icon:'📸', url: ig.url});
-  if(CONFIG.contact.email) dockItems.push({icon:'✉️', url:'mailto:'+CONFIG.contact.email});
-  document.getElementById('floatingDock').innerHTML = dockItems.map(d=>
-    `<a class="fab" href="${escapeAttr(d.url)}" target="_blank" rel="noopener">${d.icon}</a>`
-  ).join('');
-
-  // contact grid
-  const cItems = [
-    {key:'x', label:I18N_STATIC[LANG]['contact.x'], val:'', href:(CONFIG.contact.x || CONFIG.socials.find(s=>s.id==='x')?.url || '').trim() || null},
-    {key:'email', label:I18N_STATIC[LANG]['contact.email'], val:CONFIG.contact.email, href:CONFIG.contact.email?('mailto:'+CONFIG.contact.email):null},
-    {key:'igdm', label:I18N_STATIC[LANG]['contact.igdm'], val:CONFIG.contact.instagramDm, href:CONFIG.contact.instagramDm||null},
-    {key:'messenger', label:I18N_STATIC[LANG]['contact.messenger'], val:CONFIG.contact.messenger, href:CONFIG.contact.messenger||null},
-  ];
-  document.getElementById('contactGrid').innerHTML = cItems.map(c=>{
-    const has = !!c.href;
-    // Contact actions show only a button label, never the actual URL/value.
-    const actionLabels = {
-      igdm: 'Open Instagram DM',
-      messenger: 'Open Facebook',
-      x: 'Open X',
-      email: 'Open Email'
-    };
-    if(actionLabels[c.key]){
-      return has
-        ? `<a class="contact-card contact-action" href="${escapeAttr(c.href)}" target="_blank" rel="noopener"><div class="lbl">${c.label}</div><div class="val">${actionLabels[c.key]}</div></a>`
-        : `<div class="contact-card placeholder"><div class="lbl">${c.label}</div><div class="val">${I18N_STATIC[LANG]['contact.comingsoon']}</div></div>`;
-    }
-    return `<a class="contact-card ${has?'':'placeholder'}" ${has?`href="${escapeAttr(c.href)}" target="_blank" rel="noopener"`:''}>
-      <div class="lbl">${c.label}</div><div class="val">${has? escapeHtml(c.val) : I18N_STATIC[LANG]['contact.comingsoon']}</div>
-    </a>`;
-  }).join('');
-
-  // reels
-  renderReelTrack('igTrack', CONFIG.reels.instagram, I18N_STATIC[LANG]['reels.empty']);
-  renderReelTrack('fbTrack', CONFIG.reels.facebook, I18N_STATIC[LANG]['reels.empty']);
+    `<a href="#privacy-policy">${I18N_STATIC[LANG]['footer.privacy'] || 'Privacy Policy'}</a>
+     <a href="#terms-and-conditions">${I18N_STATIC[LANG]['footer.terms'] === 'Terms' ? 'Terms and Conditions' : (I18N_STATIC[LANG]['footer.terms'] || 'Terms and Conditions')}</a>`;
 
   observeReveal();
 }
@@ -234,15 +224,6 @@ function waLink(numOrUrl){
   if(/^https?:\/\//.test(numOrUrl)) return numOrUrl;
   const digits = numOrUrl.replace(/[^0-9]/g,'');
   return 'https://wa.me/'+digits;
-}
-function renderReelTrack(elId, list, emptyText){
-  const el = document.getElementById(elId);
-  if(!list || !list.length){ el.innerHTML = `<p style="color:var(--text-muted);font-size:14px;padding:10px 0;">${emptyText}</p>`; return; }
-  el.innerHTML = list.slice(0,5).map(r=>`
-    <a class="reel-card" href="${escapeAttr(r.url)}" target="_blank" rel="noopener">
-      <img class="reel-thumb" src="${escapeAttr(r.thumb || placeholderThumb(r.platform))}" alt="Reel thumbnail" loading="lazy">
-      <div class="reel-meta"><span>${r.date||''}</span><span>${PLATFORM_ICONS[r.platform]||''}</span></div>
-    </a>`).join('');
 }
 function placeholderThumb(platform){
   const bg = platform==='facebook' ? '1877F2' : 'E1306C';
@@ -432,7 +413,7 @@ function populateAdminForms(){
   document.getElementById('socialAdminList').innerHTML = CONFIG.socials.map((s,i)=>`
     <div class="row-item">
       <div class="tag-toggle ${s.enabled?'on':''}" data-toggle-social="${i}"><div class="knob"></div></div>
-      <span style="width:110px;">${s.icon} ${escapeHtml(s.name)}</span>
+      <span class="admin-social-name" style="width:110px;">${socialIconMarkup(s.id, s.icon)} ${escapeHtml(s.name)}</span>
       <input value="${escapeAttr(s.url)}" data-social-url="${i}" placeholder="https://..." style="flex:1;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:8px 10px;">
       <button class="small-btn danger" data-remove-social="${i}">Remove</button>
     </div>`).join('');
