@@ -6,8 +6,8 @@ const DEFAULT_CONFIG = {
             hi:"Clipkart_india एक तेज़ी से बढ़ता डिजिटल न्यूज़ प्लेटफ़ॉर्म है जो पूरे भारत के दर्शकों तक ट्रेंडिंग स्टोरीज़, राजनीतिक अपडेट, सामाजिक मुद्दे और वायरल कंटेंट पहुंचाता है।",
             hinglish:"Clipkart_india ek fast-growing digital news platform hai jo poore India ke audience tak trending News, political updates, social issues aur viral content pahunchata hai.",
             ur:"Clipkart_india ایک تیزی سے بڑھتا ہوا ڈیجیٹل نیوز پلیٹ فارم ہے جو پورے ہندوستان کے سامعین تک ٹرینڈنگ اسٹوریز، سیاسی اپڈیٹس، سماجی مسائل اور وائرل مواد پہنچاتا ہے۔" },
-    stat1:"50,000+", stat1label:{en:"Followers",hi:"फॉलोअर्स",hinglish:"Followers",ur:"فالوورز"},
-    stat2:"10+ Millions", stat2label:{en:"Monthly Views",hi:"मासिक व्यूज़",hinglish:"Monthly Views",ur:"ماہانہ ویوز"},
+    stat1:"50k+", stat1label:{en:"Followers",hi:"फॉलोअर्स",hinglish:"Followers",ur:"فالوورز"},
+    stat2:"40+ Millions", stat2label:{en:"Monthly Views",hi:"मासिक व्यूज़",hinglish:"Monthly Views",ur:"ماہانہ ویوز"},
     stat3:"Daily", stat3label:{en:"News & Viral Updates",hi:"न्यूज़ और वायरल अपडेट्स",hinglish:"News & Viral Updates",ur:"خبریں اور وائرل اپڈیٹس"},
     ctaPortfolioLabel:{en:"View Portfolio",hi:"पोर्टफोलियो देखें",hinglish:"Portfolio Dekhein",ur:"پورٹ فولیو دیکھیں"},
     ctaPortfolioUrl:"#reels"
@@ -32,8 +32,8 @@ const DEFAULT_CONFIG = {
     {en:"National News Updates",hi:"राष्ट्रीय समाचार अपडेट",hinglish:"National News Updates",ur:"قومی خبریں"}
   ],
   stats:[
-    {value:"50,000+", label:{en:"Instagram Followers",hi:"इंस्टाग्राम फॉलोअर्स",hinglish:"Instagram Followers",ur:"انسٹاگرام فالوورز"}},
-    {value:"10+ Millions", label:{en:"Monthly Reach",hi:"मासिक पहुंच",hinglish:"Monthly Reach",ur:"ماہانہ رسائی"}},
+    {value:"50k+", label:{en:"Instagram Followers",hi:"इंस्टाग्राम फॉलोअर्स",hinglish:"Instagram Followers",ur:"انسٹاगرام فالوورز"}},
+    {value:"40+ Millions", label:{en:"Monthly Reach",hi:"मासिक पहुंच",hinglish:"Monthly Reach",ur:"ماہانہ رسائی"}},
     {value:"High", label:{en:"Engagement — Active Audience Across India",hi:"जुड़ाव — पूरे भारत में सक्रिय दर्शक",hinglish:"Engagement — Active Audience Across India",ur:"مصروفیت — پورے ہندوستان میں فعال سامعین"}},
     {value:"Daily", label:{en:"News & Content",hi:"समाचार और कंटेंट",hinglish:"News & Content",ur:"خبریں اور مواد"}}
   ],
